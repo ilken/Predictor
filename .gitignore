@@ -4,4 +4,4 @@ dist/css/*.css
 dist/css/maps/*.css.map
 dist/js/*.js
 dist/js/maps/*.js.map
-src/data/*
+src/data/football.json
