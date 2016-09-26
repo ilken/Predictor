@@ -1,29 +1,8 @@
 var gulp = require('gulp');
-var webserver = require('gulp-webserver');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
-
-gulp.task('webserver', function() {
-  gulp.watch('src/js/*.js', ['uglifyjs']);
-  gulp.src('./')
-    .pipe(webserver({
-        livereload: {
-            enable: true,
-            filter: function(fileName) {
-                if (fileName.match(/.map$/)) {
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-        },
-        open: true,
-        fallback: 'index.html',
-        port: 9000
-    }));
-});
 
 gulp.task('uglifyjs', function() {
   if(process.env.NODE_ENV === 'development'){
@@ -39,6 +18,10 @@ gulp.task('uglifyjs', function() {
       .pipe(uglify({ preserveComments: 'license' }))
       .pipe(gulp.dest('dist/js'));
   }
+});
+
+gulp.task('uglifyjs-watch', function() {
+  gulp.watch('src/js/*.js', ['uglifyjs']);
 });
 
 gulp.task('sass', function () {
@@ -70,4 +53,4 @@ gulp.task('set-prod-node-env', function() {
 
 gulp.task('default', ['set-prod-node-env', 'sass', 'uglifyjs']);
 
-gulp.task('dev', ['set-dev-node-env', 'webserver', 'sass', 'sass:watch', 'uglifyjs']);
+gulp.task('dev', ['set-dev-node-env', 'sass', 'sass:watch', 'uglifyjs', 'uglifyjs-watch']);

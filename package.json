@@ -1,8 +1,8 @@
 {
-  "name": "SkeletonApp",
+  "name": "Predictor",
   "version": "1.0.1",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +18,8 @@
     "gulp-webserver": "^0.9.1"
   },
   "dependencies": {
+    "express": "^4.14.0",
+    "firebase": "^3.4.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-sass": "^2.3.2",

@@ -19,9 +19,11 @@ Loader.prototype.getLeagueConfig = function(id){
 };
 
 Loader.prototype.loadLeagueData = function(leagueData, callback){
-  $.getJSON(leagueData.results, function(data) {
-		callback(data);
-	});
+  $.ajax({
+    url: "/matches/en"
+  }).done(function(res) {
+    callback(res);
+  });
 };
 
 Loader.prototype.loadLeagueDataSuccess = function(leagueData){
