@@ -19,7 +19,7 @@ class BetSlipStore extends EventEmitter{
   }
 
   createBetSlip(name){
-    const id = Date.now();
+    const id = "betSlip_" + Date.now();
 
     this.betSlips.push({
       id,
