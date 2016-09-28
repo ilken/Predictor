@@ -1,4 +1,4 @@
-var Loader = function(){
+function Loader(){
   this.getLeagueData('en');
   this.getClubsData('en');
 }

@@ -15,6 +15,7 @@ app.listen(port, function(err, res){
 // Static content
 app.use(express.static(__dirname + '/dist'));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+app.use('/node_modules',  express.static(__dirname + '/node_modules'));
 
 // Routes
 app.get('/', function(req, res){
