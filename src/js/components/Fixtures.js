@@ -40,7 +40,7 @@ export default class Fixtures extends React.Component {
     return (
       <div>
         <h1>Matches</h1>
-        <ul>{FixtureComponents}</ul>
+        {FixtureComponents}
       </div>
     );
   }
