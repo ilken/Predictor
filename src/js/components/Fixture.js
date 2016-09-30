@@ -3,9 +3,27 @@ import React from "react";
 export default class Fixture extends React.Component {
   expandOptions(e){
     var button = e.target;
-    //$('.betOptions').hide(0);
-    //$(button).closest(".row").find('.betOptions').show(0);
-    $(button).closest(".row").find('.betOptions').toggle(500);
+    $(button).closest(".fixture").find('.betOptions').toggle(500);
+  }
+
+  selectBetOption(e){
+    const button = e.target;
+    const isSelected = $(button).hasClass("selected");
+
+    if(isSelected){
+      $(button).removeClass("selected");
+    }
+    else{
+      $(button).closest(".betOptions").find('.btn').removeClass("selected");
+      $(button).addClass("selected");
+    }
+  }
+
+  componentDidMount() {
+
+  }
+
+  componentWillUnmount() {
   }
 
   render(){
@@ -16,26 +34,59 @@ export default class Fixture extends React.Component {
     const {date, team1, team2, score1, score2} = this.props;
 
     return (
-      <div class="row">
-        <div class="matchInfo" onClick={this.expandOptions.bind(this)}>
-          <div class="col-md-4">{team1.name}</div>
-          <div class="col-md-1">{score1}</div>
-          <div class="col-md-1">-</div>
-          <div class="col-md-1">{score2}</div>
-          <div class="col-md-4">{team2.name}</div>
-          <div class="col-md-1">
+      <div class="container-fluid fixture">
+        <div class="row matchInfo" onClick={this.expandOptions.bind(this)}>
+          <div class="col-md-4 col-sm-4 col-xs-4 homeTeam">{team1.name}</div>
+          <div class="col-md-1 col-sm-1 col-xs-1 homeScore">{score1}</div>
+          <div class="col-md-1 col-sm-1 col-xs-1 scoreSeperator">-</div>
+          <div class="col-md-1 col-sm-1 col-xs-1 awayScore">{score2}</div>
+          <div class="col-md-4 col-sm-4 col-xs-4 awayTeam">{team2.name}</div>
+          <div class="col-md-1 col-sm-1 col-xs-1 optionsBtn">
             <button class="btn btn-success" type="button">+</button>
           </div>
         </div>
-        <div class="betOptions" style={betOptionStyle}>
-          <div class="col-md-12">
-            <div>Hidden Options</div>
-              <div>Hidden Options</div>
-                <div>Hidden Options</div>
-                  <div>Hidden Options</div>
-                    <div>Hidden Options</div>
-                      <div>Hidden Options</div>
-                        <div>Hidden Options</div>
+        <div class="row betOptions" style={betOptionStyle}>
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="row betOption">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <span>Full Time Result</span>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-4">
+                <button type="button" class="btn btn-block btn-secondary" onClick={this.selectBetOption.bind(this)}>Home</button>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-4">
+                <button type="button" class="btn btn-block btn-secondary" onClick={this.selectBetOption.bind(this)}>Draw</button>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-4">
+                <button type="button" class="btn btn-block btn-secondary" onClick={this.selectBetOption.bind(this)}>Away</button>
+              </div>
+            </div>
+
+            <div class="row betOption">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <span>Both Teams to Score</span>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <button type="button" class="btn btn-block btn-secondary" onClick={this.selectBetOption.bind(this)}>Yes</button>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <button type="button" class="btn btn-block btn-secondary" onClick={this.selectBetOption.bind(this)}>No</button>
+              </div>
+            </div>
+
+            <div class="row betOption">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <span>Total Goals</span>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <button type="button" class="btn btn-block btn-secondary" onClick={this.selectBetOption.bind(this)}>Over 2.5</button>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <button type="button" class="btn btn-block btn-secondary" onClick={this.selectBetOption.bind(this)}>Under 2.5</button>
+              </div>
+            </div>
+
+
           </div>
         </div>
       </div>

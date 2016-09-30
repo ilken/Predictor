@@ -4,17 +4,53 @@ html {
 
 body {
 	height: 100%;
-	padding-top: 70px; 
+	padding-top: 70px;
 	background: #1E1E1E;
 	color: #f9f9f9;
 
-	.container {
-		section{
-			display:none;
+	#app{
+		.fixture{
+			.matchInfo{
+				.homeTeam{}
+				.homeScore{
 
-			&.active{
-				display: block;
+				}
+				.scoreSeperator{
+					padding: 0 2px;
+			    width: 1%;
+				}
+				.awayScore{
+
+				}
+				.awayTeam{}
+				.optionsBtn{}
 			}
+
+			.betOptions{
+				background-color: #282828;
+				border: white 1px solid;
+				border-radius: 5px;
+				margin-bottom: 5px;
+				padding-bottom: 5px;
+
+				.betOption{
+					padding-bottom: 2px;
+
+					.btn{
+						color: #ffffff;
+						border-color: #ffffff;
+						background-color: #b22222;
+						font-weight: bold;
+
+						&.selected{
+							color: #fff;
+							background-color: #5cb85c;
+							border-color: #4cae4c;
+						}
+					}
+				}
+			}
+
 		}
 	}
 }
