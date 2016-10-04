@@ -1,4 +1,5 @@
 import React from "react";
+import * as FixtureActions from "../actions/FixtureActions";
 
 export default class Fixture extends React.Component {
   expandOptions(e){
@@ -14,6 +15,10 @@ export default class Fixture extends React.Component {
       $(button).removeClass("selected");
     }
     else{
+      var fixtureId = $(button).closest(".fixture").attr("id");
+      var selectedBet = $(button).text();
+      FixtureActions.selectBetOption(fixtureId, selectedBet);
+
       $(button).closest(".betOptions").find('.btn').removeClass("selected");
       $(button).addClass("selected");
     }
@@ -34,7 +39,7 @@ export default class Fixture extends React.Component {
     const {date, team1, team2, score1, score2} = this.props;
 
     return (
-      <div class="container-fluid fixture">
+      <div id={team1.name + "-" + team2.name} class="container-fluid fixture">
         <div class="row matchInfo" onClick={this.expandOptions.bind(this)}>
           <div class="col-md-4 col-sm-4 col-xs-4 homeTeam">{team1.name}</div>
           <div class="col-md-1 col-sm-1 col-xs-1 homeScore">{score1}</div>
@@ -42,7 +47,9 @@ export default class Fixture extends React.Component {
           <div class="col-md-1 col-sm-1 col-xs-1 awayScore">{score2}</div>
           <div class="col-md-4 col-sm-4 col-xs-4 awayTeam">{team2.name}</div>
           <div class="col-md-1 col-sm-1 col-xs-1 optionsBtn">
-            <button class="btn btn-success" type="button">+</button>
+            <button class="btn btn-success" type="button">
+              <i class="fa fa-bars" aria-hidden="true"></i>
+            </button>
           </div>
         </div>
         <div class="row betOptions" style={betOptionStyle}>

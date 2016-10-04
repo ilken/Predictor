@@ -13,3 +13,21 @@ export function deleteBetSlip(id){
     id,
   });
 }
+
+export function addBet(fixtureId, selectedBet){
+  console.log("Fixture ID: ", fixtureId);
+  console.log("Selected Bet: ", selectedBet);
+  dispatcher.dispatch({
+    type: "BET_OPTION_SELECTED",
+    selectedBet,
+  });
+}
+
+export function removeBet(fixtureId, selectedBet){
+  console.log("Fixture ID: ", fixtureId);
+  console.log("Selected Bet: ", selectedBet);
+  dispatcher.dispatch({
+    type: "BET_OPTION_DESELECTED",
+    selectedBet,
+  });
+}

@@ -6,13 +6,9 @@ class BetSlipStore extends EventEmitter{
     super();
     this.betSlips = [
       {
-        id: 111,
-        name: "EPL",
-        complete: false
-      },
-      {
-        id: 113,
-        name: "BTTS",
+        id: 1,
+        name: "My Awesome Bet Slip",
+        picks: [],
         complete: false
       }
     ];
@@ -35,7 +31,7 @@ class BetSlipStore extends EventEmitter{
   }
 
   handleActions(action){
-    console.log("Betslip store action: ", action);
+    //console.log("Betslip store action: ", action);
     switch(action.type){
       case "CREATE_BETSLIP": {
         this.createBetSlip(action.name);

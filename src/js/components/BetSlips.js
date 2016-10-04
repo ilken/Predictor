@@ -36,7 +36,7 @@ export default class BetSlips extends React.Component {
 
     return (
       <div>
-        <h1>List</h1>
+        <h1>Bet Slips</h1>
         <div class="input-group">
           <input id="betSlipName" type="text" class="form-control" placeholder="New Betslip name..."/>
           <span class="input-group-btn">

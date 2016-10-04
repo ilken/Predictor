@@ -19,7 +19,7 @@ export default class Fixtures extends React.Component {
     const dbRef = db.ref().child('matches');
 
     dbRef.on('value', snapshot => {
-      console.log(snapshot.val());
+      //console.log(snapshot.val());
       FixtureActions.updateFixtures(snapshot.val());
     });
 
@@ -39,7 +39,20 @@ export default class Fixtures extends React.Component {
 
     return (
       <div>
-        <h1>Matches</h1>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-8 col-sm-8 col-xs-8">
+              <span>Fixtures</span>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+              <button class="btn btn-danger" type="button">
+                <span>
+                  <i class="fa fa-caret-square-o-up" aria-hidden="true"></i> Collapse
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
         {FixtureComponents}
       </div>
     );

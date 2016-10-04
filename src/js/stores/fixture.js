@@ -20,10 +20,11 @@ class FixtureStore extends EventEmitter{
   }
 
   handleActions(action){
-    console.log("Match store action: ", action);
+    //console.log("Match store action: ", action);
     switch(action.type){
       case "UPDATE_FIXTURES": {
         this.updateFixtures(action.fixtures);
+        break;
       }
     }
   }
