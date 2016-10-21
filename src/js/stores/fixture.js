@@ -26,6 +26,10 @@ class FixtureStore extends EventEmitter{
         this.updateFixtures(action.fixtures);
         break;
       }
+      case "BET_OPTION_SELECTED":
+      {
+        //Dynamically update selection
+      }
     }
   }
 }

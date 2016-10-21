@@ -1,13 +1,28 @@
 import React from "react";
+import BetSlipPick from "./BetSlipPick";
 
-export default class BetSlips extends React.Component {
+export default class BetSlip extends React.Component {
   render(){
-    const {name} = this.props;
+    const {name, picks} = this.props;
+
+    const BetSlipPicksComponents = picks.map((pick) =>
+    {
+      return <BetSlipPick key={pick.id} {...pick}/>;
+    });
 
     return (
-      <li>
-        <span>{name}</span>
-      </li>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <h3>{name}</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+              {BetSlipPicksComponents}
+          </div>
+        </div>
+      </div>
     );
   }
 }

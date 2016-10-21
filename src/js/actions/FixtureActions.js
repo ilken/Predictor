@@ -11,3 +11,15 @@ export function updateFixtures(snapshot){
     fixtures: snapshot,
   });
 }
+
+export function selectBetOption(selection){
+  let [home, away, option, pick] = selection.split('-');
+  dispatcher.dispatch({
+    type: "BET_OPTION_SELECTED",
+    key : selection,
+    home,
+    away,
+    option,
+    pick
+  });
+}
